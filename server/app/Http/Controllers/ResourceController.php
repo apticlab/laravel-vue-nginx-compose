@@ -36,14 +36,8 @@ class ResourceController extends Controller {
   ];
 
   private $resourceClassNames = [
-    "sessions" => Session::class,
     "users" => User::class,
     "roles" => Role::class,
-    "coachingplans" => CoachingPlan::class,
-    "actions" => Action::class,
-    "questions" => Question::class,
-    "answers" => Answer::class,
-    "availabilities" => Availability::class,
   ];
 
   private function getResourceConfig($resourceName) {
@@ -2548,23 +2542,6 @@ class ResourceController extends Controller {
 
     if (isset($request->type)) {
       $context = [
-        "plan_id" => 51,
-        "proposed_date_1" => Carbon::now()->format("d/m/Y H:i"),
-        "proposed_date_2" => Carbon::now()->format("d/m/Y H:i"),
-        "proposed_date_3" => Carbon::now()->format("d/m/Y H:i"),
-        "session_date" => Carbon::now()->format("d/m/Y H:i"),
-        "goal_1" => "Migliorare",
-        "goal_2" => "Diventare più bravo",
-        "goal_3" => "Fare la differenza",
-        "kpi" => "Adipisicing praesentium eius ipsam impedit odit. Fuga voluptate iusto fuga dolorem distinctio Tempore eum facilis aliquid nobis cumque quos?",
-        "sessions_number" => 5,
-        "action_1" => "Migliorare",
-        "action_2" => "Migliorare",
-        "action_3" => "Migliorare",
-        "result_action_1" => "Positivo" ,
-        "result_action_2" => "Negativo",
-        "result_action_3" => "Negativo",
-        "note" => "Farò meglio la prossima volta",
       ];
 
       $mail = new NotificationMail($context, $type);
@@ -2576,15 +2553,6 @@ class ResourceController extends Controller {
       return $mail->render();
     } else {
       $links = [
-        "plan_created" => "Creazione Piano",
-        "session_dates_chosen" => "Scelta Date per Sessione",
-        "coaching_agreement_sent" => "Generazione Piano di Coaching",
-        "report_saved" => "Salvataggio Report",
-        "coaching_agreement_approved" => "Approvazione Patto",
-        "coaching_agreement_changes_requested" => "Richiesta Modifiche Patto",
-        "session_approved" => "Sessione Approvata",
-        "session_deleted" => "Sessione Cancellata",
-        "session_postponed" => "Sessione Posticipata",
       ];
 
       return View::make("home")
