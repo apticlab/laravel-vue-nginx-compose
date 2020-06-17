@@ -10,6 +10,8 @@ echo "Creating package.json template..."
 envsubst < ./templates/package.template.json > ./client/package.json
 echo "Creating composer.json template..."
 envsubst < ./templates/composer.template.json > ./server/composer.json
+echo "Creating server .env template..."
+envsubst < ./templates/env.template > ./server/.env
 echo "Creating nginx template..."
 envsubst < ./templates/nginx.dev.template.conf > ./web/nginx.dev.conf
 
