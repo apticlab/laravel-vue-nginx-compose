@@ -1,0 +1,332 @@
+{
+  "className": "App\\Models\\CoachingPlan",
+  "name": {
+    "singular": "piano di coaching",
+    "plural": "piani di coaching"
+  },
+  "headers": [
+    {
+      "text": "Coachee",
+      "type": "user",
+      "visible": true,
+      "class": "flex-4 h-left",
+      "value": "user",
+      "readonly": true,
+      "textField": "full_name",
+      "edit": {
+        "type": "null",
+        "value": "null"
+      }
+    },
+    {
+      "text": "Coach",
+      "type": "user",
+      "visible": true,
+      "class": "flex-4 h-left",
+      "value": "coach",
+      "readonly": true,
+      "textField": "full_name",
+      "edit": {
+        "type": "null",
+        "value": "null"
+      }
+    },
+    {
+      "text": "Avanzamento",
+      "type": "progress_bar",
+      "visible": true,
+      "class": "flex-4 h-left",
+      "value": "progress",
+      "complete": "sessions_number",
+      "edit": {
+        "type": "",
+        "value": ""
+      },
+      "readonly": true
+    },
+    {
+      "text": "Approvato",
+      "type": "boolean",
+      "visible": true,
+      "class": "flex-2 h-center tx-center",
+      "value": "approved",
+      "edit": {
+        "type": "boolean",
+        "value": "approved"
+      }
+    },
+    {
+      "text": "Richiesta Approvazione",
+      "type": "boolean",
+      "visible": true,
+      "class": "flex-2 h-center tx-center",
+      "value": "approval_required",
+      "edit": {
+        "type": "boolean",
+        "value": "approval_required"
+      }
+    },
+    {
+      "text": "KPI",
+      "visible": {
+        "list": false
+      },
+      "edit": {
+        "type": "text",
+        "value": "kpi_measure"
+      }
+    },
+    {
+      "text": "Data di Creazione",
+      "type": "date",
+      "visible": true,
+      "class": "flex-2 h-center tx-center",
+      "value": "created_at",
+      "edit": {
+        "type": "text",
+        "value": "kpi_measure"
+      },
+      "dateFormat": "DD/MM/YYYY"
+    },
+    {
+      "text": "Obiettivo 1",
+      "edit": {
+        "type": "text",
+        "value": "goal_1"
+      },
+      "hidden": true
+    },
+    {
+      "text": "Obiettivo 2",
+      "edit": {
+        "type": "text",
+        "value": "goal_2"
+      },
+      "hidden": true
+    },
+    {
+      "text": "Obiettivo 3",
+      "edit": {
+        "type": "text",
+        "value": "goal_3"
+      },
+      "hidden": true
+    },
+    {
+      "text": "Approvato",
+      "edit": {
+        "type": "boolean",
+        "value": "approved"
+      },
+      "visible": {
+        "list": false
+      }
+    },
+    {
+      "text": "Richiesta Approvazione",
+      "edit": {
+        "type": "boolean",
+        "value": "approval_required"
+      },
+      "visible": {
+        "list": false
+      }
+    },
+    {
+      "text": "Richiesta Modifiche",
+      "edit": {
+        "type": "boolean",
+        "value": "change_requested"
+      },
+      "visible": {
+        "list": false
+      },
+      "hidden": true
+    },
+    {
+      "text": "Data Approvazione",
+      "visible": {
+        "list": false
+      },
+      "edit": {
+        "type": "date",
+        "value": "approval_date"
+      }
+    },
+    {
+      "text": "Coachee",
+      "visible": {
+        "list": false
+      },
+      "edit": {
+        "type": "select",
+        "value": "user"
+      },
+      "hidden": true
+    },
+    {
+      "text": "Coach",
+      "visible": {
+        "list": false
+      },
+      "edit": {
+        "type": "select",
+        "value": "coach"
+      }
+    },
+    {
+      "text": "Stato",
+      "type": "tag",
+      "value": "status",
+      "class": "flex-2 h-center tx-center",
+      "field_name": "name",
+      "edit": {
+        "type": "select",
+        "value": "status"
+      }
+    },
+    {
+      "text": "Questionario",
+      "visible": {
+        "list": false
+      },
+      "edit": {
+        "type": "select",
+        "value": "survey"
+      }
+    },
+    {
+      "text": "Sessioni",
+      "visible": {
+        "list": false
+      },
+      "edit": {
+        "type": "multi_select",
+        "value": "sessions",
+        "isHasManyRelationship": false,
+        "foreignResourceName": "sessions",
+        "foreignResourceField": "coaching_plan_id"
+      }
+    },
+    {
+      "text": "Numero Sessioni",
+      "visible": {
+        "list": false
+      },
+      "edit": {
+        "type": "field",
+        "value": "sessions_number"
+      }
+    }
+  ],
+  "config": {
+    "admin": {
+      "canCreate": false,
+      "canDelete": true,
+      "canEdit": false,
+      "canImport": false,
+      "canExport": false,
+      "canView": true
+    },
+    "coach": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    },
+    "coachee": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    }
+  },
+  "template": {
+    "status": "",
+    "coach": "",
+    "user": "",
+    "sessions": "",
+    "survey": "",
+    "goal_1": "",
+    "goal_2": "",
+    "goal_3": "",
+    "approved": "",
+    "approval_date": "",
+    "approval_required": "",
+    "change_requested": "",
+    "kpi_measure": "",
+    "sessions_number": "",
+    "report_note": "",
+    "report_date": ""
+  },
+  "subFields": [
+    "survey",
+    "survey.answers",
+    "survey.answers.question",
+    "coach",
+    "user",
+    "status",
+    "sessions",
+    "sessions.status",
+    "sessions.coaching_plan",
+    "sessions.actions"
+  ],
+  "actions": {
+    "crud": {
+      "view": {
+        "visible": true
+      },
+      "edit": {
+        "visible": false
+      },
+      "delete": {
+        "visible": true
+      }
+    },
+    "custom": [
+      {
+        "code": "init_status",
+        "modes": ["create"],
+        "roles": ["admin", "coach"]
+      },
+      {
+        "code": "update_coaching_plan_status",
+        "modes": ["edit"],
+        "roles": ["admin", "coach"]
+      },
+      {
+        "code": "close_coaching_plan",
+        "modes": ["event"],
+        "roles": ["admin", "coach"]
+      },
+      {
+        "code": "approve_teaching_agreement",
+        "visible": true,
+        "if": {
+          "conditions": [
+            {
+              "target": "approval_required",
+              "operator": "=",
+              "value": true
+            }
+          ],
+          "operator": "AND"
+        },
+        "text": "Approva Patto di Coaching",
+        "modes": ["event"],
+        "roles": ["coach"]
+      }
+    ]
+  },
+  "roleBasedFilters": {
+    "coach": [
+      [
+        "coaching_plans.coach_id",
+        "=",
+        "id"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "className": "App\\Models\\Session",
+  "name": {
+    "singular": "sessione",
+    "plural": "sessioni"
+  },
+  "config": {
+    "admin": {
+      "canCreate": true,
+      "canDelete": false,
+      "canEdit": true,
+      "canImport": true,
+      "canView": true
+    },
+    "coach": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    },
+    "coachee": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    }
+  },
+  "headers": [
+    {
+      "text": "",
+      "type": "ball",
+      "edit": {
+        "type": null,
+        "value": null
+      },
+      "visible": {
+        "list": true,
+        "view": false,
+        "edit": false
+      },
+      "class": "flex-1 h-center",
+      "value": "status"
+    },
+    {
+      "edit": {
+        "type": "date",
+        "value": "date"
+      },
+      "text": "Data scelta",
+      "type": "date",
+      "visible": true,
+      "class": "flex-3 h-center",
+      "value": "date",
+      "readonly": false,
+      "dateFormat": "DD/MM/YYYY HH:mm"
+    },
+    {
+      "edit": {
+        "type": "date",
+        "value": "proposed_date_1"
+      },
+      "text": "Data 1",
+      "type": "date",
+      "visible": true,
+      "class": "flex-3 h-center",
+      "value": "proposed_date_1",
+      "readonly": false,
+      "dateFormat": "DD/MM/YYYY HH:mm"
+    },
+    {
+      "edit": {
+        "type": "date",
+        "value": "proposed_date_2"
+      },
+      "text": "Data 2",
+      "type": "date",
+      "visible": true,
+      "class": "flex-3 h-center",
+      "value": "proposed_date_2",
+      "readonly": false,
+      "dateFormat": "DD/MM/YYYY HH:mm"
+    },
+    {
+      "edit": {
+        "type": "date",
+        "value": "proposed_date_3"
+      },
+      "text": "Data 3",
+      "type": "date",
+      "visible": true,
+      "class": "flex-3 h-center",
+      "value": "proposed_date_3",
+      "readonly": false,
+      "dateFormat": "DD/MM/YYYY HH:mm"
+    },
+    {
+      "edit": {
+        "type": "select",
+        "value": "coaching_plan"
+      },
+      "hidden": true
+    },
+    {
+      "edit": {
+        "type": null,
+        "value": null
+      },
+      "text": "Report",
+      "type": "report",
+      "visible": {
+        "list": true,
+        "edit": false,
+        "view": true
+      },
+      "class": "flex-3 h-center"
+    },
+    {
+      "edit": {
+        "type": "text",
+        "value": "report_note"
+      },
+      "text": "Nota",
+      "type": "field",
+      "visible": true,
+      "class": "flex-3 h-center",
+      "value": "report_note",
+      "readonly": false,
+      "messages": {
+        "empty": "Nessuna nota"
+      }
+    },
+    {
+      "edit": {
+        "type": "date",
+        "value": "report_date"
+      },
+      "text": "Data Report",
+      "type": "date",
+      "visible": true,
+      "class": "flex-2 h-center",
+      "value": "report_date",
+      "readonly": false,
+      "dateFormat": "DD/MM/YYYY"
+    },
+    {
+      "edit": {
+        "type": "text",
+        "value": "status"
+      },
+      "text": "Stato",
+      "type": "tag",
+      "visible": true,
+      "class": "flex-3 h-center",
+      "value": "status",
+      "readonly": false,
+      "field_name": "name"
+    },
+    {
+      "visible": {
+        "list": false
+      },
+      "edit": {
+        "type": "multi_select",
+        "value": "actions",
+        "isHasManyRelationship": false,
+        "foreignResourceName": "actions",
+        "foreignResourceField": "session_id"
+      }
+    }
+  ],
+  "actions": {
+    "crud": {
+      "view": {
+        "visible": false
+      },
+      "edit": {
+        "visible": false
+      },
+      "delete": {
+        "visible": false
+      }
+    },
+    "custom": [
+      {
+        "code": "init_status",
+        "modes": ["create"],
+        "roles": ["admin", "coach"]
+      },
+      {
+        "code": "choose_session_date",
+        "modes": ["event"],
+        "if": {
+          "conditions": [
+            {
+              "operator": "ISNULL",
+              "target": "date"
+            },
+            {
+              "operator": "ISNOTNULL",
+              "target": "proposed_date_1"
+            },
+            {
+              "value": true,
+              "operator": "=",
+              "target": "coaching_plan.approved"
+            }
+          ],
+          "operator": "AND"
+        },
+        "roles": ["coach", "admin"],
+        "text": "Scegli la data",
+        "visible": true
+      },
+      {
+        "code": "set_session_completed",
+        "modes": ["edit"],
+        "roles": ["coach"]
+      },
+      {
+        "visible": true,
+        "text": "Cancella sessione",
+        "code": "cancel_session",
+        "modes": ["event"],
+        "roles": ["coach", "admin"],
+        "if": {
+          "conditions": [
+            {
+              "operator": "!=",
+              "value": "done",
+              "target": "status.code"
+            },
+            {
+              "operator": "ISNOTNULL",
+              "target": "date"
+            }
+          ],
+          "operator": "AND"
+        }
+      },
+      {
+        "visible": true,
+        "text": "Posticipa sessione",
+        "code": "postpone_session",
+        "modes": ["event"],
+        "roles": ["coach", "admin"],
+        "if": {
+          "conditions": [
+            {
+              "operator": "=",
+              "value": "active",
+              "target": "status.code"
+            }
+          ],
+          "operator": "AND"
+        }
+      }
+    ]
+  },
+  "template": {
+    "report_date": "",
+    "report_note": "",
+    "proposed_date_1": "",
+    "proposed_date_2": "",
+    "proposed_date_3": "",
+    "coaching_plan": "",
+    "actions": ""
+  },
+  "subFields": [
+    "status",
+    "actions",
+    "coaching_plan"
+  ]
+}

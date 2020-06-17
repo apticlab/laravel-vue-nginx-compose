@@ -1,0 +1,69 @@
+{
+  "className": "App\\Models\\Action",
+  "name": {
+    "singular": "azione",
+    "plural": "azioni"
+  },
+  "headers": [
+    {
+      "edit": {
+        "type": "text",
+        "value": "note"
+      }
+    },
+    {
+      "edit": {
+        "type": "date",
+        "value": "deadline"
+      }
+    },
+    {
+      "edit": {
+        "type": "boolean",
+        "value": "result"
+      }
+    },
+    {
+      "edit": {
+        "type": "select",
+        "value": "session"
+      }
+    }
+  ],
+  "config": {
+    "admin": {
+      "canCreate": true,
+      "canDelete": true,
+      "canEdit": true,
+      "canImport": true,
+      "canView": true
+    },
+    "coach": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    },
+    "coachee": {
+      "canCreate": true,
+      "canDelete": true,
+      "canEdit": true,
+      "canImport": false,
+      "canView": true
+    }
+  },
+  "template": {
+    "note": "",
+    "deadline": "",
+    "result": "",
+    "session": ""
+  },
+  "subFields": [
+  ],
+  "actions": {
+    "crud": {
+    },
+    "custom": []
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "className": "App\\Models\\Survey",
+  "name": {
+    "singular": "questionario",
+    "plural": "questionari"
+  },
+  "actions": {
+    "crud": {
+    },
+    "custom": [
+      {
+        "code": "calculate_survey_results",
+        "modes": [
+          "create"
+        ],
+        "roles": [
+          "admin",
+          "coach",
+          "coachee"
+        ]
+      }
+    ]
+  },
+  "headers": [
+    {
+      "edit": {
+        "type": "field",
+        "value": "area_1"
+      }
+    },
+    {
+      "edit": {
+        "type": "field",
+        "value": "area_2"
+      }
+    },
+    {
+      "edit": {
+        "type": "field",
+        "value": "area_3"
+      }
+    },
+    {
+      "edit": {
+        "type": "field",
+        "value": "area_4"
+      }
+    },
+    {
+      "edit": {
+        "type": "field",
+        "value": "result"
+      }
+    },
+    {
+      "edit": {
+        "type": "multi_select",
+        "value": "answers",
+        "isHasManyRelationship": false,
+        "foreignResourceName": "answers",
+        "foreignResourceField": "survey_id"
+      }
+    }
+  ],
+  "config": {
+    "admin": {
+      "canCreate": true,
+      "canEdit": true,
+      "canView": true,
+      "canImport": true,
+      "canDelete": true
+    },
+    "coach": {
+      "canCreate": false,
+      "canEdit": false,
+      "canView": true,
+      "canImport": false,
+      "canDelete": false
+    },
+    "coachee": {
+      "canCreate": true,
+      "canEdit": false,
+      "canView": true,
+      "canImport": false,
+      "canDelete": false
+    }
+  },
+  "roleBasedFilters": {
+  },
+  "preFilters": [],
+  "template": {
+    "area_1": 0,
+    "area_2": 0,
+    "area_3": 0,
+    "area_4": 0,
+    "result": 0,
+    "answers": ""
+  },
+  "subFields": [
+    "answers",
+    "answers.question"
+  ]
+}
