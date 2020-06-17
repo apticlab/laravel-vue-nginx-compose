@@ -9,7 +9,7 @@ class RolesTableSeeder extends Seeder
     {
       $rolesAttributes = [
         [
-          "code" => "admin",
+          "code" => "superadmin",
           "color" => "#e74c3c",
           "name" => "SuperAmministratore",
         ],
