@@ -6,11 +6,8 @@ then
   composer install
 fi
 
-printenv
-
 composer dumpautoload
 
-php artisan key:generate --force
 php artisan config:cache
 
 # Clear all the possible cache
@@ -19,6 +16,8 @@ php artisan cache:clear
 php artisan route:clear
 php artisan passport:keys
 php artisan migrate
+
+php artisan key:generate
 
 php artisan queue:work --daemon &
 
