@@ -1,6 +1,6 @@
 {
-    "name": "Application Name",
-    "description": "Application Description",
+    "name": "${PROJECT_TEAM}/${PROJECT_SLUG}",
+    "description": "Backend for ${PROJECT_SLUG} Full Stack web application",
     "license": "MIT",
     "type": "project",
     "require": {

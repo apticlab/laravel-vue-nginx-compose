@@ -1,4 +1,5 @@
 export PROJECT_SLUG=
+export PROJECT_TEAM=
 export DB_PROBE_PORT=
 export PROD_MOBILE_URL=
 export PROD_APP_URL=

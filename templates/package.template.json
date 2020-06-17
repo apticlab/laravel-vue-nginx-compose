@@ -1,5 +1,5 @@
 {
-  "name": "application_client",
+  "name": "${PROJECT_TEAM}_${PROJECT_SLUG}",
   "version": "0.1.0",
   "private": true,
   "scripts": {

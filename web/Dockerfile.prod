@@ -1,4 +1,3 @@
-
 FROM nginx:1.12
 
 RUN groupadd 1000
