@@ -5,9 +5,9 @@ services:
     build:
       context: ./mobile
       dockerfile: Dockerfile
-    image: elan-prod-mobile:latest
+    image: ${PROJECT_SLUG}-prod-mobile:latest
     environment:
-      - VIRTUAL_HOST=elancoachingapp_mobile.myroadmapp.it
+      - VIRTUAL_HOST=${PROD_MOBILE_URL}
       - VIRTUAL_PORT=80
     networks:
       - proxynet
@@ -15,9 +15,9 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile.prod
-    image: elan-prod-web
+    image: ${PROJECT_SLUG}-prod-web
     environment:
-      - VIRTUAL_HOST=coachingapp.elan-gso.com
+      - VIRTUAL_HOST=${PROD_APP_URL}
       - VIRTUAL_PORT=8080
     volumes:
       - avatars:/var/www/avatars
@@ -31,22 +31,20 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile.prod
-    image: elan-prod-client
+    image: ${PROJECT_SLUG}-prod-client
     networks:
       - default
   server:
     build:
       context: ./server
       dockerfile: Dockerfile.prod
-    image: elan-prod-server
-    volumes:
-      - avatars:/var/www/storage/app/avatars
+    image: ${PROJECT_SLUG}-prod-server
     links:
       - db:db
     environment:
-      - DB_NAME=elan
-      - DB_USER=elan
-      - DB_PASSWORD=elan_db_password
+      - DB_NAME=${PROJECT_SLUG}
+      - DB_USER=${PROJECT_SLUG}
+      - DB_PASSWORD=${PROJECT_SLUG}_db_password
       - DB_HOST=db
       - DB_PORT=3306
     networks:
@@ -56,20 +54,18 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "elan", "-pelan_db_password"]
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "${PROJECT_SLUG}", "-p${PROJECT_SLUG}_db_password"]
       timeout: 20s
       retries: 10
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_ROOT_USER=root
-      - MYSQL_DATABASE=elan
-      - MYSQL_USER=elan
-      - MYSQL_PASSWORD=elan_db_password
+      - MYSQL_DATABASE=${PROJECT_SLUG}
+      - MYSQL_USER=${PROJECT_SLUG}
+      - MYSQL_PASSWORD=${PROJECT_SLUG}_db_password
 
 volumes:
   mysql-data:
-    driver: local
-  avatars:
     driver: local
 
 networks:

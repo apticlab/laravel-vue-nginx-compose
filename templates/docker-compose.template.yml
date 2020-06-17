@@ -7,7 +7,7 @@ services:
     volumes:
       - ./web/nginx.dev.conf:/etc/nginx/nginx.conf
     environment:
-      - VIRTUAL_HOST=${PROJECT_SLUG}.local
+      - VIRTUAL_HOST=$PROJECT_SLUG.local
       - VIRTUAL_PORT=8080
     links:
       - client
