@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         [
           "name" => "Super",
           "surname" => "Amministratore",
-          "email" => "admin@elan.local",
+          "email" => "superadmin",
           "password" => "password",
           "role" => "superadmin",
         ],
