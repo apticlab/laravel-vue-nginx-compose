@@ -10,14 +10,14 @@ composer dumpautoload
 
 php artisan config:cache
 
+php artisan key:generate
+
 # Clear all the possible cache
 php artisan config:clear
 php artisan cache:clear
 php artisan route:clear
 php artisan passport:keys
 php artisan migrate
-
-php artisan key:generate
 
 php artisan queue:work --daemon &
 
