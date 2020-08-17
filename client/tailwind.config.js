@@ -1,12 +1,7 @@
 module.exports = {
   theme: {
-    flexGrow: flexGrowObject,
     extend: {
-      maxWidth: {
-        ...maxWidthObject
-      },
       maxHeight: {
-        ...maxWidthObject,
         "2": "4rem",
         "4": "8rem",
         "6": "16rem",
