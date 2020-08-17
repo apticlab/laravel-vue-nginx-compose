@@ -1,17 +1,3 @@
-var flexGrowObject = {
-  default: 1
-};
-
-var maxWidthObject = {};
-
-for (let i = 0; i < 11; i++) {
-  flexGrowObject["" + i] = i;
-}
-
-for (let i = 0; i < 11; i++) {
-  maxWidthObject["" + i * 10] = i * 10 + "%";
-}
-
 module.exports = {
   theme: {
     flexGrow: flexGrowObject,
