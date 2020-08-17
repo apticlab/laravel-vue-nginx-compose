@@ -20,7 +20,7 @@ services:
       context: ./client
       dockerfile: Dockerfile
     volumes:
-      - ./client:/usr/src/app
+      - ./client:/app
     networks:
       - default
   server:
