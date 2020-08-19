@@ -11,6 +11,7 @@ php artisan key:generate
 php artisan config:clear
 php artisan cache:clear
 php artisan route:clear
+php artisan config:cache
 php artisan passport:keys
 php artisan migrate
 
