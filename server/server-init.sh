@@ -1,15 +1,10 @@
 #!/bin/bash
 set -e
 
-if [[ ! -d vendor ]];
-then
-  composer install
-fi
-
+composer update -vv
 composer dumpautoload
 
 php artisan config:cache
-
 php artisan key:generate
 
 # Clear all the possible cache

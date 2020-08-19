@@ -5,6 +5,7 @@
     "type": "project",
     "require": {
         "php": "^7.3.3",
+        "apticlab/concorde": "^1.0.2",
         "doctrine/dbal": "^2.5",
         "sabberworm/php-css-parser": "*" ,
         "danielboendergaard/phantom-pdf": "^1.3",
