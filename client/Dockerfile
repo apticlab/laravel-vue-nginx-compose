@@ -11,4 +11,4 @@ EXPOSE 8080
 
 COPY . /app
 
-CMD ["sh", "-c", "yarn install; yarn serve"]
+CMD ["sh", "-c", "yarn upgrade; yarn serve"]
