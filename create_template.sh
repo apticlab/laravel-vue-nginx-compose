@@ -1,5 +1,11 @@
 #! /bin/bash
 
+if [ ! -f config ];
+then
+  echo "config file is missing. Have you tried with cp config.example config?"
+  exit 1
+fi
+
 source config
 
 echo "Creating docker-compose template..."
