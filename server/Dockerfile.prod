@@ -1,4 +1,4 @@
-FROM apticlab/images:laravel
+FROM apticlab/laravel:latest
 
 COPY . /var/www/
 

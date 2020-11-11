@@ -5,4 +5,4 @@ services:
       build:
         context: .
         dockerfile: laravel.dockerfile
-      image: apticlab/images:laravel
+      image: apticlab/laravel

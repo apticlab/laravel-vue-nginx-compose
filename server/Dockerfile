@@ -1,4 +1,4 @@
-FROM apticlab/images:laravel
+FROM apticlab/laravel:latest
 
 # Set all directory permissions to 755
 # RUN find application/ -type f -exec chmod 755 {} \;
