@@ -19,7 +19,7 @@ envsubst < ./templates/composer.template.json > ./server/composer.json
 echo "Creating server .env template..."
 envsubst < ./templates/env.template > ./server/.env
 echo "Creating nginx template..."
-# Substitute online $PROJECT_SLUG, otherwise all the others $<options> in nginx will fail
+# Substitute only $PROJECT_SLUG, otherwise all the others $<options> in nginx will fail
 envsubst '$PROJECT_SLUG' < ./templates/nginx.dev.template.conf > ./web/nginx.dev.conf
 
 echo "Done!"
